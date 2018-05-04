@@ -1,7 +1,8 @@
-html, body {
+html,
+body {
     font-family: 'Poppins', sans-serif;
     font-size: 15pt;
-    background-color: rgb(251, 253, 255);
+    background-color: #F7FFFF;
     color: rgb(42, 46, 46);
     height: 100%;
     width: 100%;
@@ -14,14 +15,18 @@ html, body {
     width: 100%;
 }
 
-heading {
+.heading {
     border: 3px solid red;
+    height: 100%;
+    width: 100%;
 }
 
 h1 {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 2em
+    font-size: 2em;
     border: 3px solid red;
+    height: 100%;
+    width: 25%;
 }
 
 h2 {
@@ -31,55 +36,64 @@ h2 {
 }
 
 .map {
-    border: 3px solid red;
-    height: 220%;
+    height: 320%;
     margin: auto;
-    border: 3px solid red;
-
+    background-color: #FDE369;
+    border-radius: 30px;
 }
 
 .mapheading {
     border: 3px solid red;
-
+    margin-top:10%;
 }
 
 .reviewColumn {
- float: right;
- margin: 0%;
- border: 3px solid red;
+    width: 50%;
+    height: 200%;
+    float: right;
+    margin-top: -15%;
+    background-color: #F0795E;
+    border-bottom-left-radius: 30px;
 }
 
 .cafe1 {
     border: 3px solid red;
-
+    height: 20%;
 }
 
 .cafe2 {
     border: 3px solid red;
-
+    height: 20%;
 }
 
 .cafe3 {
     border: 3px solid red;
-
+    height: 20%;
 }
 
 .cafe4 {
     border: 3px solid red;
-
+    height: 20%;
 }
 
 .suggestionArea {
     border: 3px solid red;
-
+    
 }
 
 suggestion1 {
     border: 3px solid red;
-
 }
 
 suggestion2 {
     border: 3px solid red;
+}
+
+colorPallette {
+    color: #BA8651;
+    color: #2BDDE8;
+    color: #FDE369;
+    color: #F0795E;
+    color: #F7FFFF;
 
 }
