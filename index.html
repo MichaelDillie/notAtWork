@@ -5,46 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Not at work</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="reset" href="assets/css/reset.css">
+    <link rel="login" href="login.html">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed|IBM+Plex+Mono|Poppins" rel="stylesheet">
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjsIGAbvvc68iDkIesnXXqN5Igk7eQ56o&callback=initMap"></script>
 </head>
 <body>
-
     <div class = "container">
-        <div class - "heading">
-            <h1>Not At Work</h1>
+
+            <nav class="navbar">
+                    <a class="navbar-brand">Not At Work</a>
+                    <form class="form-inline">
+                      <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Are you in business?</button>
+                    </form>
+                  </nav>
+
+            <div class = "row">
+                <div class = "col-lg-8">
+                    <div class = "map-area">
+                  
+                          <h3 class = "map-heading">Map</h3>
+                          <p>Map-area</p>
+                
+
+                    </div>
+                </div>
+         
+                <div class = "col-lg-4">
+            <div class = "cafe-list">
+
+                  <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src=".../100px180/" alt="Cafe 1 image">
+                    <div class="card-body">
+                      <h5 class="card-title">Cafe 1</h5>
+                      <p class="card-text">About Cafe 1</p>
+                    </div>
+                  </div>
+                  <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src=".../100px180/" alt="Cafe 2 image">
+                        <div class="card-body">
+                          <h5 class="card-title">Cafe 2</h5>
+                          <p class="card-text">About Cafe 2</p>
+                        </div>
+                      </div>
+                      <div class="card" style="width: 18rem;">
+                            <img class="card-img-top" src=".../100px180/" alt="Cafe 3 image">
+                            <div class="card-body">
+                              <h5 class="card-title">Cafe 3</h5>
+                              <p class="card-text">About Cafe 3</p>
+                            </div>
+                          </div>
+                          <div class="card" style="width: 18rem;">
+                                <img class="card-img-top" src=".../100px180/" alt="Cafe 4 image">
+                                <div class="card-body">
+                                  <h5 class="card-title">Cafe 4</h5>
+                                  <p class="card-text">About Cafe 4</p>
+                                </div>
+                              </div>
+            </div>
+            </div>
+            </div>
+    <div class = "row">
+        <div class = "col-lg-12">
+            <div class = "suggestion-area">
+                <h3 class = "suggestion-heading">
+                    Places you may like!
+                </h3>
+                <p class = "suggestion"> 1 </p>
+                <p class = "suggestion"> 2 </p>
+            </div>
         </div>
-    <div class = "map">
-        <h3 class = "mapheading">Map</h3>
     </div>
-    <div class = "reviewColumn">
-        <div class = "cafe1">
-            <p> Cafe 1 </p>
-        </div>
-        <div class = "cafe2">
-            <p> Cafe 2 </p>
-        </div>
-        <div class = "cafe3">
-            <p> Cafe 3 </p>
-        </div>
-        <div class = "cafe4">
-            <p> Cafe 4 </p>
-        </div>
 
     </div>
-    <div class = "suggestionArea">
-        <div class = "suggestion1">
-            <p>1</p>
-        </div>
-        <div class = "suggestion2">
-            <p>2</p>
-        </div>
-    </div>
-        
-    </div>
+
+
+ <link rel="javascript" href="assets/javascript/app.js">
     
 </body>
 </html>
