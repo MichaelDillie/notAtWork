@@ -1,15 +1,17 @@
 nav {
-    width: 115%;
-    margin-left: -7%;
-    background-color: rgb(251, 236, 253);
+   
+    background-color: rgb(253, 238, 236);
 }
 .map-area {
     background-color: rgb(223, 202, 202);
     height: 100%;
     text-align: center;
+    padding: 5%;
+    
 }
 .cafe-list {
     float: right;
+
 }
 .suggestion {
     background-color: rgb(183, 183, 209);
@@ -17,4 +19,7 @@ nav {
 }
 .card-body {
     background-color: rgb(197, 216, 197);
+}
+.sign-up {
+    padding: 10%;
 }
