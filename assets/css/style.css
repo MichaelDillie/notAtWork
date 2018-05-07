@@ -8,3 +8,7 @@ body {
    bottom:0; 
    width:100%; 
   }
+#thumb {
+  width: 180px;
+  height: 180px;
+}

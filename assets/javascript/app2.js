@@ -34,7 +34,9 @@ $(document).ready(function () {
       var ycoord = data.nearby_restaurants[i].restaurant.location.longitude;
       var marker = L.marker([xcoord, ycoord]).addTo(mymap)
       ;
-      marker.bindPopup(data.nearby_restaurants[i].restaurant).openPopup();
+      marker.bindPopup("<b>"+data.nearby_restaurants[i].restaurant.name+"</b>"+"<br>"+
+        data.nearby_restaurants[i].restaurant.location.address
+        +"<br>"+"Cuisine:"+data.nearby_restaurants[i].restaurant.cuisines+"<br>"+"<img id='thumb' src="+data.nearby_restaurants[i].restaurant.thumb+"</img>");
     }
 
 
