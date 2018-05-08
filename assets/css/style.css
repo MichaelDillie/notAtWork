@@ -1,99 +1,25 @@
-html,
-body {
-    font-family: 'Poppins', sans-serif;
-    font-size: 15pt;
-    background-color: #F7FFFF;
-    color: rgb(42, 46, 46);
+nav {
+   
+    background-color: rgb(253, 238, 236);
+}
+.map-area {
+    background-color: rgb(223, 202, 202);
     height: 100%;
-    width: 100%;
-    border: 2px solid red;
-}
-
-.contain {
-    border: 3px solid red;
-    height: 100%;
-    width: 100%;
-}
-
-.heading {
-    border: 3px solid red;
-    height: 100%;
-    width: 100%;
-}
-
-h1 {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 2em;
-    border: 3px solid red;
-    height: 100%;
-    width: 25%;
-}
-
-h2 {
-    font-family: 'Barlow Semi Condensed', sans-serif;
-    font-size: 1.3em;
-    border: 3px solid red;
-}
-
-.map {
-    height: 320%;
-    margin: auto;
-    background-color: #FDE369;
-    border-radius: 30px;
-}
-
-.mapheading {
-    border: 3px solid red;
-    margin-top:10%;
-}
-
-.reviewColumn {
-    width: 50%;
-    height: 200%;
-    float: right;
-    margin-top: -15%;
-    background-color: #F0795E;
-    border-bottom-left-radius: 30px;
-}
-
-.cafe1 {
-    border: 3px solid red;
-    height: 20%;
-}
-
-.cafe2 {
-    border: 3px solid red;
-    height: 20%;
-}
-
-.cafe3 {
-    border: 3px solid red;
-    height: 20%;
-}
-
-.cafe4 {
-    border: 3px solid red;
-    height: 20%;
-}
-
-.suggestionArea {
-    border: 3px solid red;
+    text-align: center;
+    padding: 5%;
     
 }
+.cafe-list {
+    float: right;
 
-suggestion1 {
-    border: 3px solid red;
 }
-
-suggestion2 {
-    border: 3px solid red;
+.suggestion {
+    background-color: rgb(183, 183, 209);
+    text-align: center;
 }
-
-colorPallette {
-    color: #BA8651;
-    color: #2BDDE8;
-    color: #FDE369;
-    color: #F0795E;
-    color: #F7FFFF;
-
+.card-body {
+    background-color: rgb(197, 216, 197);
+}
+.sign-up {
+    padding: 10%;
 }
