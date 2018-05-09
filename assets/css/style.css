@@ -69,8 +69,16 @@ body {
     border: #ffff00;
 }
 .btn-primary:hover{
-    background-color: #ffff00;
+    background-color: #feaf00;
     color: #000;
+    border-color: #feaf00;
+}
+.btn-primary:visited{
+    border-color: #feaf00;
+}
+.btn-primary:active{
+    background-color: #000;
+    border-color: #feaf00 !important;
 }
 .restaurant-img {
     height: 90px;

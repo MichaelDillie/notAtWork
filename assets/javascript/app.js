@@ -1,74 +1,106 @@
 $(document).ready(function () {
-  //Makes variable Map and sets center to USA coords
-  // Stays at a zoom of 6
-  var mymap = L.map('mapid').setView([37.0902, -95.7129], 6);
+    //Makes variable Map and sets center to USA coords
+    // Stays at a zoom of 6
+    var mymap = L.map('mapid').setView([37.0902, -95.7129], 6);
 
-  // API token and Map data Contribution footer
-  L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-    attribution: ' <a href="https://www.openstreetmap.org/">&copy;OpenStreetMap </a><a href="https://creativecommons.org/licenses/by-sa/2.0/"> CC-BY-SA</a>, <a href="https://www.mapbox.com/">Imagery © Mapbox</a>',
-    maxZoom: 18,
-    type: "raster",
-    background: "#000",
-    id: 'mapbox.dark',
-    accessToken: 'pk.eyJ1IjoiZGF2aWRvZmxvcmVzIiwiYSI6ImNqZ3NjdmVvbTAxaHcyenF0cWViOXA1cWsifQ.oVUanCyMScIkw_DKQWxGpQ'
-  }).addTo(mymap);
-
-
-  //Ajax Json request
-
-  $.getJSON("assets/javascript/resturants.json", function (data) {
-
-    //magic button simulates the enter from a searchbox 
-    // or a "search nearby" button
-    $(".magicButton").click(function () {
- 
-
-      //Takes first Coord from Json and "flyTo" after entry of data with a zoom factor of 15 ( local level )
-      var citycoordx = data.location.latitude;
-      var citycoordy = data.location.longitude;
-      mymap.flyTo(new L.LatLng(citycoordx, citycoordy), 15);
-
-        // TODO: ADD OTHER ICONS FOR NUMBERED ITERATIONS MARKERS
-
-      //Creates Yellow Icon for use in markers
-      var greenIcon = L.icon({
-        iconUrl: 'assets/images/markerYellow.png',
-        shadowUrl: 'assets/images/markerYellowShadowLighter.png',
-
-        iconSize: [32, 40], // size of the icon
-        shadowSize: [32, 40], // size of the shadow
-        iconAnchor: [22, 40], // point of the icon which will correspond to marker's location
-        shadowAnchor: [19, 42], // the same for the shadow
-        popupAnchor: [-5, -10] // point from which the popup should open relative to the iconAnchor
-      });
+    // API token and Map data Contribution footer
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        attribution: ' <a href="https://www.openstreetmap.org/">&copy;OpenStreetMap </a><a href="https://creativecommons.org/licenses/by-sa/2.0/"> CC-BY-SA</a>, <a href="https://www.mapbox.com/">Imagery © Mapbox</a>',
+        maxZoom: 18,
+        type: "raster",
+        background: "#000",
+        id: 'mapbox.dark',
+        accessToken: 'pk.eyJ1IjoiZGF2aWRvZmxvcmVzIiwiYSI6ImNqZ3NjdmVvbTAxaHcyenF0cWViOXA1cWsifQ.oVUanCyMScIkw_DKQWxGpQ'
+    }).addTo(mymap);
 
 
-      //Loops through Json to Create Markers, Labels, and Icons
-      for (i = 0; i < data.nearby_restaurants.length; i++) {
-        // set vars to x and y for coord use
-        var xcoord = data.nearby_restaurants[i].restaurant.location.latitude;
-        var ycoord = data.nearby_restaurants[i].restaurant.location.longitude;
+    
 
-        //Chooses the icons for the Markers
-        var marker = L.marker([xcoord, ycoord], {
-          icon: greenIcon
-        }).addTo(mymap);
+    //Ajax Json request for MAP!
 
-        // CREATES THE POPUP LABEL
-        marker.bindPopup("<b>" + data.nearby_restaurants[i].restaurant.name + "</b>" + "<br>" +
-          data.nearby_restaurants[i].restaurant.location.address +
-          "<br>" + "Cuisine:" + data.nearby_restaurants[i].restaurant.cuisines + "<br>" + "<img id='thumb' src=" + data.nearby_restaurants[i].restaurant.thumb + "</img>");
-      }
+    $.getJSON("assets/javascript/resturants.json", function (data) {
+
+        //magic button simulates the enter from a searchbox 
+        // or a "search nearby" button
+        $(".magicButton").click(function () {
 
 
+            //Takes first Coord from Json and "flyTo" after entry of data with a zoom factor of 15 ( local level )
+            var citycoordx = data.location.latitude;
+            var citycoordy = data.location.longitude;
+            mymap.flyTo(new L.LatLng(citycoordx, citycoordy), 15);
+
+            // TODO: ADD OTHER ICONS FOR NUMBERED ITERATIONS MARKERS
+
+            //Creates Yellow Icon for use in markers
+            var greenIcon = L.icon({
+                iconUrl: 'assets/images/markerYellowSmall.png',
+                shadowUrl: 'assets/images/markerYellowShadowLighter.png',
+
+                iconSize: [32, 40], // size of the icon
+                shadowSize: [24, 24], // size of the shadow
+                iconAnchor: [22, 40], // point of the icon which will correspond to marker's location
+                shadowAnchor: [18, 35], // the same for the shadow
+                popupAnchor: [-5, -10] // point from which the popup should open relative to the iconAnchor
+            });
 
 
+            //Loops through Json to Create Markers, Labels, and Icons
+            for (i = 0; i < data.nearby_restaurants.length; i++) {
+                // set vars to x and y for coord use
+                var xcoord = data.nearby_restaurants[i].restaurant.location.latitude;
+                var ycoord = data.nearby_restaurants[i].restaurant.location.longitude;
+
+                //Chooses the icons for the Markers
+                var marker = L.marker([xcoord, ycoord], {
+                    icon: greenIcon
+                }).addTo(mymap);
+
+                // CREATES THE POPUP LABEL
+                marker.bindPopup("<b>" + data.nearby_restaurants[i].restaurant.name + "</b>" + "<br>" +
+                    data.nearby_restaurants[i].restaurant.location.address +
+                    "<br>" + "Cuisine:" + data.nearby_restaurants[i].restaurant.cuisines + "<br>" + "<img id='thumb' src=" + data.nearby_restaurants[i].restaurant.thumb + "</img>");
+            }
+
+
+
+
+
+        });
 
     });
 
-  });
 
-  //EVERYTHING ABOVE THIS IS DAVID
+    // GEOLOCATION SEARCH NEARBY and INITALIZE
+  //JSFIDDLE
+
+
+  $("#GetInfo").click(function () {
+    GetInfo();
+});
+
+function GetInfo() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(ShowPosition);
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function ShowPosition(position) {
+    var latlon = position.coords.latitude + "," + position.coords.longitude;
+    var x = "<b>Latitude: </b>" + position.coords.latitude +
+        "<br><b>Longitude: </b>" + position.coords.longitude;
+
+        //prints long, lat coords to dom
+    document.getElementById("Result").innerHTML = x;
+  
+}
+
+
+
+
+    //EVERYTHING ABOVE THIS IS DAVID
 
 
 
@@ -79,7 +111,7 @@ $(document).ready(function () {
             headers: {
                 "user-key": "465c36f62f7c99a289666a2388692476"
             },
-            url: "https://developers.zomato.com/api/v2.1/locations?query=austin&count=5"
+            url: "https://developers.zomato.com/api/v2.1/locations?query=austin&count=30"
         }).then(function (response) {
             var lat = response.location_suggestions[0].latitude;
             var lon = response.location_suggestions[0].longitude;
