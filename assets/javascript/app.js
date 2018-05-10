@@ -27,6 +27,8 @@ $(document).ready(function () {
       var citycoordx = data.location.latitude;
       var citycoordy = data.location.longitude;
       mymap.flyTo(new L.LatLng(citycoordx, citycoordy), 15);
+      console.log(citycoordx + " " + citycoordy);
+      ajaxOne(citycoordx, citycoordy);
 
         // TODO: ADD OTHER ICONS FOR NUMBERED ITERATIONS MARKERS
 
@@ -74,15 +76,16 @@ $(document).ready(function () {
 
     var sectionContainer = $(".section-container");
 
-    function ajaxOne() {
+    function ajaxOne(cordx, cordy) {
+        console.log(this.citycoordx);
         $.ajax({
             headers: {
                 "user-key": "465c36f62f7c99a289666a2388692476"
             },
             url: "https://developers.zomato.com/api/v2.1/locations?query=austin&count=5"
         }).then(function (response) {
-            var lat = response.location_suggestions[0].latitude;
-            var lon = response.location_suggestions[0].longitude;
+            var lat = cordx;
+            var lon = cordy;
             var cityId = response.location_suggestions[0].entity_id;
             // console.log("lat " + lat + " | " + "lon " + lon + " | City ID " + cityId);
             ajaxTwo(lat, lon);
@@ -187,7 +190,6 @@ $(document).ready(function () {
             }
         });
     }
-    ajaxOne();
 
 
 });
