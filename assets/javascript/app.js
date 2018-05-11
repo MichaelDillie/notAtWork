@@ -1,17 +1,49 @@
 $(document).ready(function () {
+
+    $(".dn").on("click", function() {
+        // $(".mapid").toggleID("toggle-mapid");
+        $(".no-gutters").toggleClass("toggle-no-gutters");
+        $("body").toggleClass("toggle-body");
+        $(".main-row").toggleClass("toggle-main-row");
+        // $("#mapid").toggleClass("#mapbox.light","mapbox.drak");
+        // $("#mapid").toggleClass("background","#000");
+        
+        
+      });
   //Makes variable Map and sets center to USA coords
   // Stays at a zoom of 6
   var mymap = L.map('mapid').setView([37.0902, -95.7129], 6);
 
   // API token and Map data Contribution footer
+ 
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     attribution: ' <a href="https://www.openstreetmap.org/">&copy;OpenStreetMap </a><a href="https://creativecommons.org/licenses/by-sa/2.0/"> CC-BY-SA</a>, <a href="https://www.mapbox.com/">Imagery © Mapbox</a>',
     maxZoom: 18,
     type: "raster",
-    background: "#000",
-    id: 'mapbox.dark',
+    // background: "#000",
+    // id: 'mapbox.dark',
+    background: "white",
+    id: 'mapbox.light',
     accessToken: 'pk.eyJ1IjoiZGF2aWRvZmxvcmVzIiwiYSI6ImNqZ3NjdmVvbTAxaHcyenF0cWViOXA1cWsifQ.oVUanCyMScIkw_DKQWxGpQ'
   }).addTo(mymap);
+
+  $(".dn").on("click", function(){
+
+
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        attribution: ' <a href="https://www.openstreetmap.org/">&copy;OpenStreetMap </a><a href="https://creativecommons.org/licenses/by-sa/2.0/"> CC-BY-SA</a>, <a href="https://www.mapbox.com/">Imagery © Mapbox</a>',
+        maxZoom: 18,
+        type: "raster",
+        background: "black",
+        id: 'mapbox.dark',
+        // background: "white",
+        // id: 'mapbox.light',
+        accessToken: 'pk.eyJ1IjoiZGF2aWRvZmxvcmVzIiwiYSI6ImNqZ3NjdmVvbTAxaHcyenF0cWViOXA1cWsifQ.oVUanCyMScIkw_DKQWxGpQ'
+      }).addTo(mymap);
+
+     
+      });
+  
 
 
   //Ajax Json request
@@ -163,7 +195,7 @@ $(document).ready(function () {
                 var menuUrl = $("<a>");
                 menuUrl.addClass("col-sm-12 menu-url");
                 menuUrl.attr("href", restaurantMenuUrlData);
-                menuUrl.text(restaurantNameData + " Menu");
+                menuUrl.text(" Menu");
                 menuUrlRow.append(menuUrl);
                 // Address
                 var addressRow = $("<div>");
@@ -189,5 +221,34 @@ $(document).ready(function () {
     }
     ajaxOne();
 
+    // for changing modes
+    mapboxgl.accessToken = 'undefined';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/basic-v9',
+        zoom: 13,
+        center: [4.899, 52.372]
+    });
+    
+    var layerList = document.getElementById('menu');
+    var inputs = layerList.getElementsByTagName('input');
+    
+    function switchLayer(layer) {
+        var layerId = layer.target.id;
+        map.setStyle('mapbox://styles/mapbox/' + layerId + '-v9');
+    }
+    
+    for (var i = 0; i < inputs.length; i++) {
+        inputs[i].onclick = switchLayer;
+    }
+
+    // changing mode 
+    $(".dn").on("click", function(){
+
+        $("body").css("background", "white");
+
+        
+
+    });
 
 });
