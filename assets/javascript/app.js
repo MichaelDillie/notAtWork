@@ -11,6 +11,8 @@ $(document).ready(function () {
         $(".restaurant-name").toggleClass("toggle-restaurant-name");
         $(".time-open-close").toggleClass("toggle-time-open-close");
         $(".distance").toggleClass("toggle-distance");
+        $("footer").toggleClass("toggle-footer");
+        $("i").toggleClass("toggle-i");
 
         
         // $("#mapid").toggleClass("#mapbox.light","mapbox.drak");
@@ -36,21 +38,21 @@ $(document).ready(function () {
   }).addTo(mymap);
 
 
-//   $(".dn").on("click", function(){
+  $(".dn").on("click", function(){
 
-//     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-//         attribution: ' <a href="https://www.openstreetmap.org/">&copy;OpenStreetMap </a><a href="https://creativecommons.org/licenses/by-sa/2.0/"> CC-BY-SA</a>, <a href="https://www.mapbox.com/">Imagery © Mapbox</a>',
-//         maxZoom: 18,
-//         type: "raster",
-//         background: "black",
-//         id: 'mapbox.dark',
-//         // background: "white",
-//         // id: 'mapbox.light',
-//         accessToken: 'pk.eyJ1IjoiZGF2aWRvZmxvcmVzIiwiYSI6ImNqZ3NjdmVvbTAxaHcyenF0cWViOXA1cWsifQ.oVUanCyMScIkw_DKQWxGpQ'
-//       }).addTo(mymap);
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        attribution: ' <a href="https://www.openstreetmap.org/">&copy;OpenStreetMap </a><a href="https://creativecommons.org/licenses/by-sa/2.0/"> CC-BY-SA</a>, <a href="https://www.mapbox.com/">Imagery © Mapbox</a>',
+        maxZoom: 18,
+        type: "raster",
+        background: "black",
+        id: 'mapbox.dark',
+        // background: "white",
+        // id: 'mapbox.light',
+        accessToken: 'pk.eyJ1IjoiZGF2aWRvZmxvcmVzIiwiYSI6ImNqZ3NjdmVvbTAxaHcyenF0cWViOXA1cWsifQ.oVUanCyMScIkw_DKQWxGpQ'
+      }).addTo(mymap);
 
      
-//       });
+      });
       
 
 
@@ -196,6 +198,21 @@ $(document).ready(function () {
                 rating.addClass("col-md-2 rating");
                 rating.text(ratingData);
                 ratingRow.append(rating);
+
+               
+                // if (ratingData > 3.9) {
+                //     $(".rating").css("background","green");
+                // }
+                // else if(3.9 > ratingData > 2.5) {
+                //     $(".rating").css("background","yellow");
+                // }
+                // else {
+                //     $(".rating").css("background","red");
+                // }
+
+    
+                
+
                 // Menu URL
                 var menuUrlRow = $("<div>");
                 menuUrlRow.addClass("row");
@@ -226,7 +243,9 @@ $(document).ready(function () {
 
             }
         });
+
     }
+
     ajaxOne();
 
     // for changing modes
