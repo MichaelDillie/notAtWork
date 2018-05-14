@@ -13,10 +13,7 @@ $(document).ready(function () {
         $(".distance").toggleClass("toggle-distance");
         $("footer").toggleClass("toggle-footer");
         $("i").toggleClass("toggle-i");
-
-        
-        // $("#mapid").toggleClass("#mapbox.light","mapbox.drak");
-        // $("#mapid").toggleClass("background","#000");
+        $("L.tileLayer.mapbox.light").toggleClass("id","L.tileLayer.mapbox.dark");
         
         
       });
@@ -30,13 +27,11 @@ $(document).ready(function () {
     attribution: ' <a href="https://www.openstreetmap.org/">&copy;OpenStreetMap </a><a href="https://creativecommons.org/licenses/by-sa/2.0/"> CC-BY-SA</a>, <a href="https://www.mapbox.com/">Imagery © Mapbox</a>',
     maxZoom: 18,
     type: "raster",
-    // background: "#000",
+    background: "#000",
     // id: 'mapbox.dark',
-    background: "#eee",
     id: 'mapbox.light',
     accessToken: 'pk.eyJ1IjoiZGF2aWRvZmxvcmVzIiwiYSI6ImNqZ3NjdmVvbTAxaHcyenF0cWViOXA1cWsifQ.oVUanCyMScIkw_DKQWxGpQ'
   }).addTo(mymap);
-
 
   $(".dn").on("click", function(){
 
@@ -44,16 +39,17 @@ $(document).ready(function () {
         attribution: ' <a href="https://www.openstreetmap.org/">&copy;OpenStreetMap </a><a href="https://creativecommons.org/licenses/by-sa/2.0/"> CC-BY-SA</a>, <a href="https://www.mapbox.com/">Imagery © Mapbox</a>',
         maxZoom: 18,
         type: "raster",
-        background: "black",
+        background: "#000",
         id: 'mapbox.dark',
-        // background: "white",
         // id: 'mapbox.light',
         accessToken: 'pk.eyJ1IjoiZGF2aWRvZmxvcmVzIiwiYSI6ImNqZ3NjdmVvbTAxaHcyenF0cWViOXA1cWsifQ.oVUanCyMScIkw_DKQWxGpQ'
       }).addTo(mymap);
 
-     
-      });
-      
+  });
+
+ 
+
+
 
 
   //Ajax Json request
@@ -198,18 +194,6 @@ $(document).ready(function () {
                 rating.addClass("col-md-2 rating");
                 rating.text(ratingData);
                 ratingRow.append(rating);
-
-               
-                // if (ratingData > 3.9) {
-                //     $(".rating").css("background","green");
-                // }
-                // else if(3.9 > ratingData > 2.5) {
-                //     $(".rating").css("background","yellow");
-                // }
-                // else {
-                //     $(".rating").css("background","red");
-                // }
-
     
                 
 
@@ -269,7 +253,7 @@ $(document).ready(function () {
         inputs[i].onclick = switchLayer;
     }
 
-    // changing mode 
+   
     
 
 });
