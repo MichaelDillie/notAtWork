@@ -5,6 +5,14 @@ $(document).ready(function () {
         $(".no-gutters").toggleClass("toggle-no-gutters");
         $("body").toggleClass("toggle-body");
         $(".main-row").toggleClass("toggle-main-row");
+        $(".menu-url").toggleClass("toggle-menu-url");
+        $(".head").toggleClass("toggle-head");
+        $(".main-body").toggleClass("toggle-main-body");
+        $(".restaurant-name").toggleClass("toggle-restaurant-name");
+        $(".time-open-close").toggleClass("toggle-time-open-close");
+        $(".distance").toggleClass("toggle-distance");
+
+        
         // $("#mapid").toggleClass("#mapbox.light","mapbox.drak");
         // $("#mapid").toggleClass("background","#000");
         
@@ -22,28 +30,28 @@ $(document).ready(function () {
     type: "raster",
     // background: "#000",
     // id: 'mapbox.dark',
-    background: "white",
+    background: "#eee",
     id: 'mapbox.light',
     accessToken: 'pk.eyJ1IjoiZGF2aWRvZmxvcmVzIiwiYSI6ImNqZ3NjdmVvbTAxaHcyenF0cWViOXA1cWsifQ.oVUanCyMScIkw_DKQWxGpQ'
   }).addTo(mymap);
 
-  $(".dn").on("click", function(){
 
+//   $(".dn").on("click", function(){
 
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-        attribution: ' <a href="https://www.openstreetmap.org/">&copy;OpenStreetMap </a><a href="https://creativecommons.org/licenses/by-sa/2.0/"> CC-BY-SA</a>, <a href="https://www.mapbox.com/">Imagery © Mapbox</a>',
-        maxZoom: 18,
-        type: "raster",
-        background: "black",
-        id: 'mapbox.dark',
-        // background: "white",
-        // id: 'mapbox.light',
-        accessToken: 'pk.eyJ1IjoiZGF2aWRvZmxvcmVzIiwiYSI6ImNqZ3NjdmVvbTAxaHcyenF0cWViOXA1cWsifQ.oVUanCyMScIkw_DKQWxGpQ'
-      }).addTo(mymap);
+//     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+//         attribution: ' <a href="https://www.openstreetmap.org/">&copy;OpenStreetMap </a><a href="https://creativecommons.org/licenses/by-sa/2.0/"> CC-BY-SA</a>, <a href="https://www.mapbox.com/">Imagery © Mapbox</a>',
+//         maxZoom: 18,
+//         type: "raster",
+//         background: "black",
+//         id: 'mapbox.dark',
+//         // background: "white",
+//         // id: 'mapbox.light',
+//         accessToken: 'pk.eyJ1IjoiZGF2aWRvZmxvcmVzIiwiYSI6ImNqZ3NjdmVvbTAxaHcyenF0cWViOXA1cWsifQ.oVUanCyMScIkw_DKQWxGpQ'
+//       }).addTo(mymap);
 
      
-      });
-  
+//       });
+      
 
 
   //Ajax Json request
@@ -185,7 +193,7 @@ $(document).ready(function () {
                 ratingRow.addClass("row");
                 colThree.append(ratingRow);
                 var rating = $("<div>");
-                rating.addClass("col-md-12 rating");
+                rating.addClass("col-md-2 rating");
                 rating.text(ratingData);
                 ratingRow.append(rating);
                 // Menu URL
@@ -243,12 +251,6 @@ $(document).ready(function () {
     }
 
     // changing mode 
-    $(".dn").on("click", function(){
-
-        $("body").css("background", "white");
-
-        
-
-    });
+    
 
 });

@@ -33,6 +33,7 @@
   .head{
     background-color: rgb(26,26,26);
   }
+ 
 
   /* .toggle-logo {
     background-color: white;
@@ -47,11 +48,14 @@ html, header {
     background-color: #000;
 }
 .no-gutters {
-    margin-right: 0;
-    margin-left: 0;
-  
-
+    /* margin-right: 0;
+    margin-left: 0; */
+    background: #eee;
   }
+.toggle-no-gutters {
+  background: #181717;
+}
+
 body {
     font-family: 'Open Sans', sans-serif !important;
     background: linear-gradient(white,white);
@@ -95,9 +99,17 @@ body {
     padding: 1px;
     width: 100%;
     margin: 15px 0px;
-    background: white;
+    background: #eee;
     color: black;
+    margin-left: 0%;
 }
+.main-row:hover {
+  background-color: #f8f8f8;
+}
+.toggle-main-row:hover {
+  background-color: #000;
+}
+
 .toggle-main-row {
   background: #181717;
   color: white;
@@ -115,6 +127,21 @@ body {
     background-color: #ffff00;
     color: #000;
 }
+.menu-url {
+  
+  color: rgb(151, 63, 63);
+}
+.menu-url:hover {
+  color: rgb(151, 63, 63);
+}
+
+.toggle-menu-url:hover {
+  color: #ffff00;
+}
+.toggle-menu-url {
+  color: #ffff00;
+  
+}
 .restaurant-img {
     height: 90px;
     width: 90px;
@@ -126,15 +153,38 @@ body {
 }
 
 .restaurant-name {
-    font-size: 1.6em;
+    font-size: 1.2em;
+    font-weight: bolder;
+    color: rgb(151, 63, 63);
     margin-bottom: 10px;
+    margin-left: 3%;
     /* text-shadow: 2px 3px #000; */
+}
+.toggle-restaurant-name {
+  color: white;
 }
 .time-open-close {
     font-size: 0.7em;
+    color: rgb(110, 97, 97);
+    margin-left: 3%;
+}
+.toggle-time-open-close {
+  color: white;
 }
 .distance {
     font-size: 0.7em;
+    color: rgb(110, 97, 97);
+    margin-left: 3%;
+}
+.toggle-distance {
+  color: white;
+}
+.rating {
+  background: rgb(42, 100, 42);
+  color: white;
+  width: 10px;
+  border-radius: 20px;
+  margin-left: 5%;
 }
 
 /* thumbnail map size fix */
@@ -146,6 +196,16 @@ body {
     left: -85px;
     top: -62px;
     
+}
+#mapid {
+  background-color: #eee;
+  
+}
+.main-body {
+  background-color: #eee;
+}
+.toggle-main-body {
+  background-color: #181717;
 }
 
 /* #mapid > div.leaflet-pane.leaflet-map-pane > div.leaflet-pane.leaflet-popup-pane > div > div.leaflet-popup-content-wrapper {
