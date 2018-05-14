@@ -33,7 +33,19 @@ $(document).ready(function () {
     accessToken: 'pk.eyJ1IjoiZGF2aWRvZmxvcmVzIiwiYSI6ImNqZ3NjdmVvbTAxaHcyenF0cWViOXA1cWsifQ.oVUanCyMScIkw_DKQWxGpQ'
   }).addTo(mymap);
 
+  var isLight = true;
   $(".dn").on("click", function(){
+      if(isLight === true){
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        attribution: ' <a href="https://www.openstreetmap.org/">&copy;OpenStreetMap </a><a href="https://creativecommons.org/licenses/by-sa/2.0/"> CC-BY-SA</a>, <a href="https://www.mapbox.com/">Imagery © Mapbox</a>',
+        maxZoom: 18,
+        type: "raster",
+        background: "#000",
+        id: 'mapbox.light',
+        // id: 'mapbox.light',
+        accessToken: 'pk.eyJ1IjoiZGF2aWRvZmxvcmVzIiwiYSI6ImNqZ3NjdmVvbTAxaHcyenF0cWViOXA1cWsifQ.oVUanCyMScIkw_DKQWxGpQ'
+      }).remove(mymap);
+
 
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
         attribution: ' <a href="https://www.openstreetmap.org/">&copy;OpenStreetMap </a><a href="https://creativecommons.org/licenses/by-sa/2.0/"> CC-BY-SA</a>, <a href="https://www.mapbox.com/">Imagery © Mapbox</a>',
@@ -44,7 +56,30 @@ $(document).ready(function () {
         // id: 'mapbox.light',
         accessToken: 'pk.eyJ1IjoiZGF2aWRvZmxvcmVzIiwiYSI6ImNqZ3NjdmVvbTAxaHcyenF0cWViOXA1cWsifQ.oVUanCyMScIkw_DKQWxGpQ'
       }).addTo(mymap);
-
+      isLight = false;
+    } else {
+        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+            attribution: ' <a href="https://www.openstreetmap.org/">&copy;OpenStreetMap </a><a href="https://creativecommons.org/licenses/by-sa/2.0/"> CC-BY-SA</a>, <a href="https://www.mapbox.com/">Imagery © Mapbox</a>',
+            maxZoom: 18,
+            type: "raster",
+            background: "#000",
+            id: 'mapbox.dark',
+            // id: 'mapbox.light',
+            accessToken: 'pk.eyJ1IjoiZGF2aWRvZmxvcmVzIiwiYSI6ImNqZ3NjdmVvbTAxaHcyenF0cWViOXA1cWsifQ.oVUanCyMScIkw_DKQWxGpQ'
+          }).remove(mymap);
+    
+    
+        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+            attribution: ' <a href="https://www.openstreetmap.org/">&copy;OpenStreetMap </a><a href="https://creativecommons.org/licenses/by-sa/2.0/"> CC-BY-SA</a>, <a href="https://www.mapbox.com/">Imagery © Mapbox</a>',
+            maxZoom: 18,
+            type: "raster",
+            background: "#000",
+            id: 'mapbox.light',
+            // id: 'mapbox.light',
+            accessToken: 'pk.eyJ1IjoiZGF2aWRvZmxvcmVzIiwiYSI6ImNqZ3NjdmVvbTAxaHcyenF0cWViOXA1cWsifQ.oVUanCyMScIkw_DKQWxGpQ'
+          }).addTo(mymap);
+          isLight = true;
+    }
   });
 
  
@@ -232,26 +267,6 @@ $(document).ready(function () {
 
     ajaxOne();
 
-    // for changing modes
-    mapboxgl.accessToken = 'undefined';
-    var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/basic-v9',
-        zoom: 13,
-        center: [4.899, 52.372]
-    });
-    
-    var layerList = document.getElementById('menu');
-    var inputs = layerList.getElementsByTagName('input');
-    
-    function switchLayer(layer) {
-        var layerId = layer.target.id;
-        map.setStyle('mapbox://styles/mapbox/' + layerId + '-v9');
-    }
-    
-    for (var i = 0; i < inputs.length; i++) {
-        inputs[i].onclick = switchLayer;
-    }
 
    
     
