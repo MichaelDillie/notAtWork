@@ -67,8 +67,8 @@ $(document).ready(function () {
             // id: 'mapbox.light',
             accessToken: 'pk.eyJ1IjoiZGF2aWRvZmxvcmVzIiwiYSI6ImNqZ3NjdmVvbTAxaHcyenF0cWViOXA1cWsifQ.oVUanCyMScIkw_DKQWxGpQ'
           }).remove(mymap);
-    
-    
+
+
         L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
             attribution: ' <a href="https://www.openstreetmap.org/">&copy;OpenStreetMap </a><a href="https://creativecommons.org/licenses/by-sa/2.0/"> CC-BY-SA</a>, <a href="https://www.mapbox.com/">Imagery © Mapbox</a>',
             maxZoom: 18,
@@ -82,7 +82,7 @@ $(document).ready(function () {
     }
   });
 
- 
+
 
 
 
@@ -91,10 +91,10 @@ $(document).ready(function () {
 
   $.getJSON("assets/javascript/resturants.json", function (data) {
 
-    //magic button simulates the enter from a searchbox 
+    //magic button simulates the enter from a searchbox
     // or a "search nearby" button
     $(".magicButton").click(function () {
- 
+
 
       //Takes first Coord from Json and "flyTo" after entry of data with a zoom factor of 15 ( local level )
       var citycoordx = data.location.latitude;
@@ -103,7 +103,7 @@ $(document).ready(function () {
 
         // TODO: ADD OTHER ICONS FOR NUMBERED ITERATIONS MARKERS
 
-        // This will seach in area with Zamoto
+        // Grabs cords from map and inputs them to Zamoto
         ajaxOne(citycoordx, citycoordy);
 
       //Creates Yellow Icon for use in markers
@@ -150,7 +150,7 @@ $(document).ready(function () {
 
     var sectionContainer = $(".section-container");
 
-    function ajaxOne(cordx,cordy) {
+    function ajaxOne(cordx, cordy) {
         $.ajax({
             headers: {
                 "user-key": "465c36f62f7c99a289666a2388692476"
