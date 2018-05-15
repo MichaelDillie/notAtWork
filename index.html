@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="login" type="text/css" href="login.html">
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
@@ -20,58 +21,68 @@
 <body>
 
  <link rel="javascript" href="assets/javascript/app.js">
+ <div class = "head">
+    <div class = "row">
+        <div class = "col-lg-6">
+            <div class="logo">
+                            NOT AT Work
+                       
+            </div>
+        </div>
+        <div class = "col-lg-2">
+            <a class="navbar-brand" href="#"></a>
+            <button style="margin-top: 15%;"type="button"class="btn btn-primary magicButton"><i class="fas fa-search" id = "head-icon"></i> Search Nearby</button>
+        </div>
+        <div class = "col-lg-2">
+            <a href="login.html" class="btn btn-primary login-button"><i class="fas fa-briefcase" id = "head-icon"></i> Create Business Acount</a>
+        </div>
+        <div class = "col-md-2">
+            <div class="toggleWrapper">
+                <input type="checkbox" class="dn" id="dn"/>
+                <label for="dn" class="toggle">
+                    <span class="toggle__handler">
+                    <span class="crater crater--1"></span>
+                    <span class="crater crater--2"></span>
+                    <span class="crater crater--3"></span>
+                    </span>
+                    <span class="star star--1"></span>
+                    <span class="star star--2"></span>
+                    <span class="star star--3"></span>
+                    <span class="star star--4"></span>
+                    <span class="star star--5"></span>
+                    <span class="star star--6"></span>
+                </label>
+            </div>
+        </div>
+        </div>
     
-        
-    <!-- NavBar -->
+    </div>
+    
+<!-- Map -->
+<div class = "main-body">
     <div class = "row">
         <div class = "col-lg-6">
-                <div id="logo">
-                        NOT AT Work
-                </div>
-                </div>
-        <div class = "col-lg-3">
-    <!-- <nav class="navbar navbar-dark bg-dark"> -->
-        
-        <a class="navbar-brand" href="#"></a>
-        <button style="margin-top: 10%;"type="button"class="btn btn-primary magicButton">Search Nearby</button>
-    </div>
-        <!-- <button type="button" class="btn btn-primary">Create Business Account</button> -->
-        <div class = "col-lg-3">
-        <a href="login.html" class="btn btn-primary">Create Business Acount</a>
-
-        <!-- <button type="button" name="dark_light" onclick="toggleDarkLight()" title="Toggle dark/light mode">🌛</button> -->
-        </div>
-    <!-- </nav> -->
-    </div>
-    </div>
-
-
-
-    <!-- Map -->
-    <div class = "row">
-        <div class = "col-lg-6">
-   
-        <div id="mapid" style="height: 600px; width: 100%;"></div>
-       
-      
-     
-   
-        </div>
-        
-
-
+            <div id="mapid" style="height: 900px; width: 100%;"></div>
+       </div>
     <!-- Section -->
     <!-- Removed "container from the div class to allow 100% width" -->
     <div class = "col-lg-6">
-    <div class=" section-container no-gutters">
-
+        <div class=" section-container no-gutters">
     </div>
     </div>
     </div>
+</div>
 
-    <script src="assets/javascript/app.js"></script>
-
-
+<footer id = "icon-footer">
+        <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.twitter.com/" class="card-link" target="_blank"><i class="fab fa-twitter"></i></a>
+        
+       
+</footer>
+<script src="assets/javascript/app.js"></script>
 </body>
 
 </html>
+
+

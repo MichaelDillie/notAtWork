@@ -1,27 +1,100 @@
 $(document).ready(function () {
+
+    $(".dn").on("click", function() {
+        // $(".mapid").toggleID("toggle-mapid");
+        $(".no-gutters").toggleClass("toggle-no-gutters");
+        $("body").toggleClass("toggle-body");
+        $(".main-row").toggleClass("toggle-main-row");
+        $(".menu-url").toggleClass("toggle-menu-url");
+        $(".head").toggleClass("toggle-head");
+        $(".main-body").toggleClass("toggle-main-body");
+        $(".restaurant-name").toggleClass("toggle-restaurant-name");
+        $(".time-open-close").toggleClass("toggle-time-open-close");
+        $(".distance").toggleClass("toggle-distance");
+        $("footer").toggleClass("toggle-footer");
+        $("i").toggleClass("toggle-i");
+        $("L.tileLayer.mapbox.light").toggleClass("id","L.tileLayer.mapbox.dark");
+
+
+      });
   //Makes variable Map and sets center to USA coords
   // Stays at a zoom of 6
   var mymap = L.map('mapid').setView([37.0902, -95.7129], 6);
 
   // API token and Map data Contribution footer
+
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     attribution: ' <a href="https://www.openstreetmap.org/">&copy;OpenStreetMap </a><a href="https://creativecommons.org/licenses/by-sa/2.0/"> CC-BY-SA</a>, <a href="https://www.mapbox.com/">Imagery © Mapbox</a>',
     maxZoom: 18,
     type: "raster",
     background: "#000",
-    id: 'mapbox.dark',
+    // id: 'mapbox.dark',
+    id: 'mapbox.light',
     accessToken: 'pk.eyJ1IjoiZGF2aWRvZmxvcmVzIiwiYSI6ImNqZ3NjdmVvbTAxaHcyenF0cWViOXA1cWsifQ.oVUanCyMScIkw_DKQWxGpQ'
   }).addTo(mymap);
+
+  var isLight = true;
+  $(".dn").on("click", function(){
+      if(isLight === true){
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        attribution: ' <a href="https://www.openstreetmap.org/">&copy;OpenStreetMap </a><a href="https://creativecommons.org/licenses/by-sa/2.0/"> CC-BY-SA</a>, <a href="https://www.mapbox.com/">Imagery © Mapbox</a>',
+        maxZoom: 18,
+        type: "raster",
+        background: "#000",
+        id: 'mapbox.light',
+        // id: 'mapbox.light',
+        accessToken: 'pk.eyJ1IjoiZGF2aWRvZmxvcmVzIiwiYSI6ImNqZ3NjdmVvbTAxaHcyenF0cWViOXA1cWsifQ.oVUanCyMScIkw_DKQWxGpQ'
+      }).remove(mymap);
+
+
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        attribution: ' <a href="https://www.openstreetmap.org/">&copy;OpenStreetMap </a><a href="https://creativecommons.org/licenses/by-sa/2.0/"> CC-BY-SA</a>, <a href="https://www.mapbox.com/">Imagery © Mapbox</a>',
+        maxZoom: 18,
+        type: "raster",
+        background: "#000",
+        id: 'mapbox.dark',
+        // id: 'mapbox.light',
+        accessToken: 'pk.eyJ1IjoiZGF2aWRvZmxvcmVzIiwiYSI6ImNqZ3NjdmVvbTAxaHcyenF0cWViOXA1cWsifQ.oVUanCyMScIkw_DKQWxGpQ'
+      }).addTo(mymap);
+      isLight = false;
+    } else {
+        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+            attribution: ' <a href="https://www.openstreetmap.org/">&copy;OpenStreetMap </a><a href="https://creativecommons.org/licenses/by-sa/2.0/"> CC-BY-SA</a>, <a href="https://www.mapbox.com/">Imagery © Mapbox</a>',
+            maxZoom: 18,
+            type: "raster",
+            background: "#000",
+            id: 'mapbox.dark',
+            // id: 'mapbox.light',
+            accessToken: 'pk.eyJ1IjoiZGF2aWRvZmxvcmVzIiwiYSI6ImNqZ3NjdmVvbTAxaHcyenF0cWViOXA1cWsifQ.oVUanCyMScIkw_DKQWxGpQ'
+          }).remove(mymap);
+    
+    
+        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+            attribution: ' <a href="https://www.openstreetmap.org/">&copy;OpenStreetMap </a><a href="https://creativecommons.org/licenses/by-sa/2.0/"> CC-BY-SA</a>, <a href="https://www.mapbox.com/">Imagery © Mapbox</a>',
+            maxZoom: 18,
+            type: "raster",
+            background: "#000",
+            id: 'mapbox.light',
+            // id: 'mapbox.light',
+            accessToken: 'pk.eyJ1IjoiZGF2aWRvZmxvcmVzIiwiYSI6ImNqZ3NjdmVvbTAxaHcyenF0cWViOXA1cWsifQ.oVUanCyMScIkw_DKQWxGpQ'
+          }).addTo(mymap);
+          isLight = true;
+    }
+  });
+
+ 
+
+
 
 
   //Ajax Json request
 
   $.getJSON("assets/javascript/resturants.json", function (data) {
 
-    //magic button simulates the enter from a searchbox
+    //magic button simulates the enter from a searchbox 
     // or a "search nearby" button
     $(".magicButton").click(function () {
-
+ 
 
       //Takes first Coord from Json and "flyTo" after entry of data with a zoom factor of 15 ( local level )
       var citycoordx = data.location.latitude;
@@ -29,6 +102,9 @@ $(document).ready(function () {
       mymap.flyTo(new L.LatLng(citycoordx, citycoordy), 15);
 
         // TODO: ADD OTHER ICONS FOR NUMBERED ITERATIONS MARKERS
+
+        // This will seach in area with Zamoto
+        ajaxOne(citycoordx, citycoordy);
 
       //Creates Yellow Icon for use in markers
       var greenIcon = L.icon({
@@ -74,7 +150,7 @@ $(document).ready(function () {
 
     var sectionContainer = $(".section-container");
 
-    function ajaxOne() {
+    function ajaxOne(cordx,cordy) {
         $.ajax({
             headers: {
                 "user-key": "465c36f62f7c99a289666a2388692476"
@@ -153,9 +229,10 @@ $(document).ready(function () {
                 ratingRow.addClass("row");
                 colThree.append(ratingRow);
                 var rating = $("<div>");
-                rating.addClass("col-md-12 rating");
+                rating.addClass("col-md-2 rating");
                 rating.text(ratingData);
                 ratingRow.append(rating);
+
                 // Menu URL
                 var menuUrlRow = $("<div>");
                 menuUrlRow.addClass("row");
@@ -163,7 +240,7 @@ $(document).ready(function () {
                 var menuUrl = $("<a>");
                 menuUrl.addClass("col-sm-12 menu-url");
                 menuUrl.attr("href", restaurantMenuUrlData);
-                menuUrl.text(restaurantNameData + " Menu");
+                menuUrl.text(" Menu");
                 menuUrlRow.append(menuUrl);
                 // Address
                 var addressRow = $("<div>");
@@ -186,8 +263,7 @@ $(document).ready(function () {
 
             }
         });
-    }
-    ajaxOne();
 
+    }
 
 });
