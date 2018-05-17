@@ -1,6 +1,7 @@
 $(document).ready(function () {
     
     var mapBuildCoords;
+    
 
     $(".dn").on("click", function() {
         // $(".mapid").toggleID("toggle-mapid");
@@ -119,7 +120,7 @@ $(document).ready(function () {
 
   });
 
-  
+  var bounds = [];
   function mapBuilder(mapBuildCoords) {
     //Takes first Coord from Json and "flyTo" after entry of data with a zoom factor of 15 ( local level )
     data = mapBuildCoords;
@@ -134,34 +135,41 @@ $(document).ready(function () {
 
     //Creates Yellow Icon for use in markers
     var greenIcon = L.icon({
-      iconUrl: 'assets/images/markerYellow.png',
-      shadowUrl: 'assets/images/markerYellowShadowLighter.png',
-
-      iconSize: [32, 40], // size of the icon
-      shadowSize: [32, 40], // size of the shadow
-      iconAnchor: [22, 40], // point of the icon which will correspond to marker's location
-      shadowAnchor: [19, 42], // the same for the shadow
-      popupAnchor: [-5, -10] // point from which the popup should open relative to the iconAnchor
-    });
-
-
+        shadowUrl: 'assets/images/markerYellowShadowLighter.png',
+  
+        iconSize: [32, 40], // size of the icon
+        shadowSize: [32, 40], // size of the shadow
+        iconAnchor: [22, 40], // point of the icon which will correspond to marker's location
+        shadowAnchor: [19, 42], // the same for the shadow
+        popupAnchor: [-5, -10] // point from which the popup should open relative to the iconAnchor
+      });
+      
     //Loops through Json to Create Markers, Labels, and Icons
     for (i = 0; i < data.nearby_restaurants.length; i++) {
       // set vars to x and y for coord use
       var xcoord = data.nearby_restaurants[i].restaurant.location.latitude;
       var ycoord = data.nearby_restaurants[i].restaurant.location.longitude;
-
+        markerNum = i+1;
       //Chooses the icons for the Markers
+      greenIcon.options.iconUrl = 'assets/images/markerYellow'+markerNum+'.png';
       var marker = L.marker([xcoord, ycoord], {
         icon: greenIcon
       }).addTo(mymap);
-
+      construct = xcoord+", "+ycoord;
+      bounds.push(construct);
+      console.log(bounds);
+    
       // CREATES THE POPUP LABEL
       marker.bindPopup("<b>" + data.nearby_restaurants[i].restaurant.name + "</b>" + "<br>" +
         data.nearby_restaurants[i].restaurant.location.address +
         "<br>" + "Cuisine:" + data.nearby_restaurants[i].restaurant.cuisines + "<br>" + "<img id='thumb' src=" + data.nearby_restaurants[i].restaurant.thumb + "</img>");
-    }}
 
+   
+        
+    }}
+  
+        
+   
 
   //EVERYTHING ABOVE THIS IS DAVID
 
@@ -192,6 +200,8 @@ $(document).ready(function () {
             url: "https://developers.zomato.com/api/v2.1/geocode?lat=" + lat + "&lon=" + lon + "&count=30"
         }).then(function (response) {
             mapBuilder(response);
+            
+            
 
 
             for (var i = 0; i < response.nearby_restaurants.length; i++) {
