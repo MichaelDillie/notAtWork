@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    
+    var mapBuildCoords;
 
     $(".dn").on("click", function() {
         // $(".mapid").toggleID("toggle-mapid");
@@ -111,53 +113,55 @@ $(document).ready(function () {
           }
 
 
-      //Takes first Coord from Json and "flyTo" after entry of data with a zoom factor of 15 ( local level )
-      var citycoordx = data.location.latitude;
-      var citycoordy = data.location.longitude;
-      mymap.flyTo(new L.LatLng(citycoordx, citycoordy), 15);
-
-        // TODO: ADD OTHER ICONS FOR NUMBERED ITERATIONS MARKERS
-
-        // Grabs cords from map and inputs them to Zamoto
-        // ajaxOne(citycoordx, citycoordy);
-
-      //Creates Yellow Icon for use in markers
-      var greenIcon = L.icon({
-        iconUrl: 'assets/images/markerYellow.png',
-        shadowUrl: 'assets/images/markerYellowShadowLighter.png',
-
-        iconSize: [32, 40], // size of the icon
-        shadowSize: [32, 40], // size of the shadow
-        iconAnchor: [22, 40], // point of the icon which will correspond to marker's location
-        shadowAnchor: [19, 42], // the same for the shadow
-        popupAnchor: [-5, -10] // point from which the popup should open relative to the iconAnchor
-      });
-
-
-      //Loops through Json to Create Markers, Labels, and Icons
-      for (i = 0; i < data.nearby_restaurants.length; i++) {
-        // set vars to x and y for coord use
-        var xcoord = data.nearby_restaurants[i].restaurant.location.latitude;
-        var ycoord = data.nearby_restaurants[i].restaurant.location.longitude;
-
-        //Chooses the icons for the Markers
-        var marker = L.marker([xcoord, ycoord], {
-          icon: greenIcon
-        }).addTo(mymap);
-
-        // CREATES THE POPUP LABEL
-        marker.bindPopup("<b>" + data.nearby_restaurants[i].restaurant.name + "</b>" + "<br>" +
-          data.nearby_restaurants[i].restaurant.location.address +
-          "<br>" + "Cuisine:" + data.nearby_restaurants[i].restaurant.cuisines + "<br>" + "<img id='thumb' src=" + data.nearby_restaurants[i].restaurant.thumb + "</img>");
-      }
-
-
-
 
 
     });
 
   });
+
+  
+  function mapBuilder(mapBuildCoords) {
+    //Takes first Coord from Json and "flyTo" after entry of data with a zoom factor of 15 ( local level )
+    data = mapBuildCoords;
+    var citycoordx = data.location.latitude;
+    var citycoordy = data.location.longitude;
+    mymap.flyTo(new L.LatLng(citycoordx, citycoordy), 15);
+
+      // TODO: ADD OTHER ICONS FOR NUMBERED ITERATIONS MARKERS
+
+      // Grabs cords from map and inputs them to Zamoto
+      // ajaxOne(citycoordx, citycoordy);
+
+    //Creates Yellow Icon for use in markers
+    var greenIcon = L.icon({
+      iconUrl: 'assets/images/markerYellow.png',
+      shadowUrl: 'assets/images/markerYellowShadowLighter.png',
+
+      iconSize: [32, 40], // size of the icon
+      shadowSize: [32, 40], // size of the shadow
+      iconAnchor: [22, 40], // point of the icon which will correspond to marker's location
+      shadowAnchor: [19, 42], // the same for the shadow
+      popupAnchor: [-5, -10] // point from which the popup should open relative to the iconAnchor
+    });
+
+
+    //Loops through Json to Create Markers, Labels, and Icons
+    for (i = 0; i < data.nearby_restaurants.length; i++) {
+      // set vars to x and y for coord use
+      var xcoord = data.nearby_restaurants[i].restaurant.location.latitude;
+      var ycoord = data.nearby_restaurants[i].restaurant.location.longitude;
+
+      //Chooses the icons for the Markers
+      var marker = L.marker([xcoord, ycoord], {
+        icon: greenIcon
+      }).addTo(mymap);
+
+      // CREATES THE POPUP LABEL
+      marker.bindPopup("<b>" + data.nearby_restaurants[i].restaurant.name + "</b>" + "<br>" +
+        data.nearby_restaurants[i].restaurant.location.address +
+        "<br>" + "Cuisine:" + data.nearby_restaurants[i].restaurant.cuisines + "<br>" + "<img id='thumb' src=" + data.nearby_restaurants[i].restaurant.thumb + "</img>");
+    }}
+
 
   //EVERYTHING ABOVE THIS IS DAVID
 
@@ -187,6 +191,9 @@ $(document).ready(function () {
             },
             url: "https://developers.zomato.com/api/v2.1/geocode?lat=" + lat + "&lon=" + lon + "&count=30"
         }).then(function (response) {
+            mapBuilder(response);
+
+
             for (var i = 0; i < response.nearby_restaurants.length; i++) {
                 var restaurantImgData = response.nearby_restaurants[i].restaurant.featured_image;
                 var restaurantNameData = response.nearby_restaurants[i].restaurant.name;
@@ -275,6 +282,8 @@ $(document).ready(function () {
                 mainRow.append(colThree);
 
                 sectionContainer.append(mainRow);
+
+                
 
             }
         });
