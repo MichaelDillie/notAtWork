@@ -95,6 +95,21 @@ $(document).ready(function () {
     // or a "search nearby" button
     $(".magicButton").click(function () {
 
+        navigator.geolocation.getCurrentPosition(success, error);
+
+        function success(pos) {
+            var crd = pos.coords;
+
+            console.log("Current position is:");
+            console.log("Latitude :" +  (crd.latitude));
+            console.log("Longitude:" +  (crd.longitude));
+            ajaxOne(crd.latitude, crd.longitude);
+          }
+
+          function error(err) {
+            console.warn("ERROR(${err.code}): ${err.message}");
+          }
+
 
       //Takes first Coord from Json and "flyTo" after entry of data with a zoom factor of 15 ( local level )
       var citycoordx = data.location.latitude;
@@ -104,7 +119,7 @@ $(document).ready(function () {
         // TODO: ADD OTHER ICONS FOR NUMBERED ITERATIONS MARKERS
 
         // Grabs cords from map and inputs them to Zamoto
-        ajaxOne(citycoordx, citycoordy);
+        // ajaxOne(citycoordx, citycoordy);
 
       //Creates Yellow Icon for use in markers
       var greenIcon = L.icon({
@@ -157,8 +172,8 @@ $(document).ready(function () {
             },
             url: "https://developers.zomato.com/api/v2.1/locations?query=austin&count=5"
         }).then(function (response) {
-            var lat = response.location_suggestions[0].latitude;
-            var lon = response.location_suggestions[0].longitude;
+            var lat = cordx;
+            var lon = cordy;
             var cityId = response.location_suggestions[0].entity_id;
             // console.log("lat " + lat + " | " + "lon " + lon + " | City ID " + cityId);
             ajaxTwo(lat, lon);
