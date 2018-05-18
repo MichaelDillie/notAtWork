@@ -7,6 +7,7 @@
     font-weight: normal;
     font-style: normal;
 }  
+
 .logo {
     font-family: polya_regularregular;
     color: #181717;
@@ -61,7 +62,7 @@ html, header {
 
 body {
     font-family: 'Open Sans', sans-serif !important;
-    background: linear-gradient(white,white);
+    
     color: black;
     
     
@@ -147,12 +148,14 @@ body {
 }
 .restaurant-img {
     height: 90px;
-    width: 90px;
+    width: 110px;
     object-fit: cover;
     padding-right: 25px;
+    
 }
 .col-one {
     padding: 0px;
+    
 }
 
 .restaurant-name {
@@ -203,7 +206,12 @@ body {
 #mapid {
   background-color: #eee;
   
+  
 }
+#append {
+  
+}
+
 .main-body {
   background-color: #eee;
 }

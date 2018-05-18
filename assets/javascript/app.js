@@ -1,6 +1,7 @@
 $(document).ready(function () {
     
     var mapBuildCoords;
+    clickOnce = false;
     
 
     $(".dn").on("click", function() {
@@ -120,13 +121,14 @@ $(document).ready(function () {
 
   });
 
-  var bounds = [];
+
   function mapBuilder(mapBuildCoords) {
     //Takes first Coord from Json and "flyTo" after entry of data with a zoom factor of 15 ( local level )
     data = mapBuildCoords;
     var citycoordx = data.location.latitude;
     var citycoordy = data.location.longitude;
     mymap.flyTo(new L.LatLng(citycoordx, citycoordy), 15);
+  
 
       // TODO: ADD OTHER ICONS FOR NUMBERED ITERATIONS MARKERS
 
@@ -136,7 +138,6 @@ $(document).ready(function () {
     //Creates Yellow Icon for use in markers
     var greenIcon = L.icon({
         shadowUrl: 'assets/images/markerYellowShadowLighter.png',
-  
         iconSize: [32, 40], // size of the icon
         shadowSize: [32, 40], // size of the shadow
         iconAnchor: [22, 40], // point of the icon which will correspond to marker's location
@@ -155,9 +156,7 @@ $(document).ready(function () {
       var marker = L.marker([xcoord, ycoord], {
         icon: greenIcon
       }).addTo(mymap);
-      construct = xcoord+", "+ycoord;
-      bounds.push(construct);
-      console.log(bounds);
+     
     
       // CREATES THE POPUP LABEL
       marker.bindPopup("<b>" + data.nearby_restaurants[i].restaurant.name + "</b>" + "<br>" +
@@ -200,6 +199,7 @@ $(document).ready(function () {
             url: "https://developers.zomato.com/api/v2.1/geocode?lat=" + lat + "&lon=" + lon + "&count=30"
         }).then(function (response) {
             mapBuilder(response);
+            
             
             
 
